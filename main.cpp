@@ -3,29 +3,35 @@
 #include <time.h>
 #include <random>
 #include <Windows.h>
-
-typedef int(*pRand)();
-int GetRand() {
-	return rand();
-}
-
-int gambling(pRand r, int time) {
-	int selection;
-	printf("0‚©1‚Ì”Ô†‚ğ“ü—Í‚µ‚Ä‚Ë\n0‚Í‹ô”\n1‚ÍŠï”\n");
-	scanf_s("%d", &selection);
-	int rand = r();
-	Sleep(time * 1000);
-	if (rand % 2 == selection) {
-		printf("³‰ğ");
-		return 0;
-	}
-	printf("•s³‰ğ^^");
-	return 0;
-}
+#include <functional>
 
 int main() {
+	int selection;
 	srand(time(nullptr));
-	pRand random = GetRand;
-	int randTrue = gambling(random, 3);
+	int random = rand() % 6 + 1;
+	printf("0‚©1‚Ì”Ô†‚ğ“ü—Í‚µ‚Ä‚Ë\n0‚Í‹ô”\n1‚ÍŠï”\n");
+	scanf_s("%d", &selection);
+
+	std::function<void(int)> gambling = [=](int select) {
+		if (random % 2 == select) {
+			printf("³‰ğ");
+		}
+		else if (random % 2 != select) {
+			printf("•s³‰ğ^^");
+		}
+		else {
+			printf("‚»‚Ì’l‚Í“ü‚ê‚¿‚á‚¢‚¯‚È‚¢‚æ");
+		}
+	};
+
+
+	std::function<void(std::function<void(int)>, int)>setTimeout = [=](std::function<void(int)> d, int time) {
+		Sleep(time * 1000);
+		d(selection);
+	
+	};
+
+	setTimeout(gambling, 3);
+
 	return 0;
 }
