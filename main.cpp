@@ -1,25 +1,31 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <time.h>
+#include <random>
+#include <Windows.h>
 
-template<typename Tipe>
-
-Tipe Min(Tipe a, Tipe b) {
-	if (a >= b) {
-		return b;
-	}
-	return a;
+typedef int(*pRand)();
+int GetRand() {
+	return rand();
 }
-template<>
-char Min<char>(char a, char b) {
+
+int gambling(pRand r, int time) {
+	int selection;
+	printf("0‚©1‚Ì”Ô†‚ğ“ü—Í‚µ‚Ä‚Ë\n0‚Í‹ô”\n1‚ÍŠï”\n");
+	scanf_s("%d", &selection);
+	int rand = r();
+	Sleep(time * 1000);
+	if (rand % 2 == selection) {
+		printf("³‰ğ");
+		return 0;
+	}
+	printf("•s³‰ğ^^");
 	return 0;
 }
 
 int main() {
-	if (Min<char>('1', '2') == 0) {
-		printf("”šˆÈŠO‚Í‘ã“ü‚Å‚«‚Ü‚¹‚ñ");
-	}
-	printf("%d\n", Min<int>(5,6));
-	printf("%f\n", Min<float>(5.5f, 4.5));
-	printf("%f\n", Min<double>(5.4, 2.2));
+	srand(time(nullptr));
+	pRand random = GetRand;
+	int randTrue = gambling(random, 3);
 	return 0;
 }
