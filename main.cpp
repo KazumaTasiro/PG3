@@ -1,37 +1,68 @@
 #include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
-#include <random>
-#include <Windows.h>
-#include <functional>
+#include <list>
+#include <iostream>
+
+using namespace std;
 
 int main() {
-	int selection;
-	srand(time(nullptr));
-	int random = rand() % 6 + 1;
-	printf("0‚©1‚Ì”Ô†‚ğ“ü—Í‚µ‚Ä‚Ë\n0‚Í‹ô”\n1‚ÍŠï”\n");
-	scanf_s("%d", &selection);
 
-	std::function<void(int)> gambling = [=](int select) {
-		if (random % 2 == select) {
-			printf("³‰ğ");
+	list<const char*> YamanoteLine;
+	printf("1970\n");
+	YamanoteLine.push_back("Tokyo");
+	YamanoteLine.push_back("Kanda");
+	YamanoteLine.push_back("Akihabara");
+	YamanoteLine.push_back("Okachimachi");
+	YamanoteLine.push_back("Ueno");
+	YamanoteLine.push_back("Uguisudani");
+	YamanoteLine.push_back("Nippori");
+	YamanoteLine.push_back("Tabata");
+	YamanoteLine.push_back("Komagome");
+	YamanoteLine.push_back("Sugamo");
+	YamanoteLine.push_back("Otsuka");
+	YamanoteLine.push_back("Ikebukuro");
+	YamanoteLine.push_back("Mejiro");
+	YamanoteLine.push_back("Takadanobaba");
+	YamanoteLine.push_back("Shin-Okubo");
+	YamanoteLine.push_back("Shinjuku");
+	YamanoteLine.push_back("Yoyogi");
+	YamanoteLine.push_back("Harajuku");
+	YamanoteLine.push_back("Shibuya");
+	YamanoteLine.push_back("Ebisu");
+	YamanoteLine.push_back("Meguro");
+	YamanoteLine.push_back("Gotanda");
+	YamanoteLine.push_back("Osaki");
+	YamanoteLine.push_back("Shinagawa");
+	YamanoteLine.push_back("Tamachi");
+	YamanoteLine.push_back("Hamamatsucho");
+	YamanoteLine.push_back("Shimbashi");
+	YamanoteLine.push_back("Yurakucho");
+	for (auto itr = YamanoteLine.begin(); itr != YamanoteLine.end(); ++itr) {
+		std::cout << *itr << "\n";
+	}
+
+	printf("\n2019\n");
+
+	for (auto itr = YamanoteLine.begin(); itr != YamanoteLine.end(); ++itr) {
+		if (*itr == "Tabata") {
+			YamanoteLine.insert(itr, "Nishi-Nippori");
 		}
-		else if (random % 2 != select) {
-			printf("•s³‰ğ^^");
+	}
+
+	for (auto itr = YamanoteLine.begin(); itr != YamanoteLine.end(); ++itr) {
+		std::cout << *itr << "\n";
+	}
+
+	printf("\n2022\n");
+
+	for (auto itr = YamanoteLine.begin(); itr != YamanoteLine.end(); ++itr) {
+		if (*itr == "Tamachi") {
+			YamanoteLine.insert(itr, "TakanawaGateway");
 		}
-		else {
-			printf("‚»‚Ì’l‚Í“ü‚ê‚¿‚á‚¢‚¯‚È‚¢‚æ");
-		}
-	};
+	}
 
-
-	std::function<void(std::function<void(int)>, int)>setTimeout = [=](std::function<void(int)> d, int time) {
-		Sleep(time * 1000);
-		d(selection);
-
-	};
-
-	setTimeout(gambling, 3);
+	for (auto itr = YamanoteLine.begin(); itr != YamanoteLine.end(); ++itr) {
+		std::cout << *itr << "\n";
+	}
 
 	return 0;
 }
