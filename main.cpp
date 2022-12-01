@@ -7,7 +7,7 @@ using namespace std;
 int main() {
 
 	list<const char*> YamanoteLine;
-	printf("1970\n");
+	cout << "\n1970\n";
 	YamanoteLine.push_back("Tokyo");
 	YamanoteLine.push_back("Kanda");
 	YamanoteLine.push_back("Akihabara");
@@ -40,7 +40,7 @@ int main() {
 		std::cout << *itr << "\n";
 	}
 
-	printf("\n2019\n");
+	cout<<"\n2019\n";
 
 	for (auto itr = YamanoteLine.begin(); itr != YamanoteLine.end(); ++itr) {
 		if (*itr == "Tabata") {
@@ -52,7 +52,7 @@ int main() {
 		std::cout << *itr << "\n";
 	}
 
-	printf("\n2022\n");
+	cout << "\n2022\n";
 
 	for (auto itr = YamanoteLine.begin(); itr != YamanoteLine.end(); ++itr) {
 		if (*itr == "Tamachi") {
