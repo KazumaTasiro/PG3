@@ -309,11 +309,11 @@ void ChangeList(PgList<A>& strList, int& operationNum)
 	std::cout << "1.¸‡‚Å•À‚Ñ‘Ö‚¦‚é" << std::endl;
 	std::cout << "2.~‡‚Å•À‚Ñ‘Ö‚¦‚é" << std::endl;
 
-	int changeOperationNum;
+	int changeNum;
 
-	std::cin >> changeOperationNum;
+	std::cin >> changeNum;
 
-	switch (changeOperationNum)
+	switch (changeNum)
 	{
 	case 1:
 	{
