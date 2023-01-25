@@ -1,15 +1,28 @@
 #pragma once
+#include <stdio.h>
 
 class Enemy
 {
-protected:
 public:
-	static int EenemyCount;
-	static bool deathFlag;
 
-	Enemy(); /*{ EenemyCount++; }*/
-	~Enemy(); /*{ EenemyCount-- ; }*/
-	
-	void Death();
-	bool GetDeathFlag();
+
+
+	enum EnemyMovement
+	{
+	approach,
+	shoot,
+	secession
+	};
+	EnemyMovement phase_= EnemyMovement::approach;
+
+	void Approach();
+	void Shoot();
+	void Secession();
+
+	void Update();
+	Enemy(); 
+	~Enemy();
+private:
+	static void (Enemy::* pFanc[])();
+
 };
