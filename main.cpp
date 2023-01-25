@@ -2,16 +2,21 @@
 #include <stdio.h>
 #include <iostream>
 #include"windows.h"
-#include"Enemy.h"
+#include"Rectangle.h"
+#include"Circle.h"
 using namespace std;
 
 
 
 int main() {
-	Enemy* enemy = new Enemy();
+	Circle* circle = new Circle;
+	Rectangles* rectangles = new Rectangles;
 
-	enemy->Update();
-	enemy->Update();
-	enemy->Update();
+	circle->size();
+	circle->draw();
+
+	rectangles->size();
+	rectangles->draw();
+
 	return 0;
 }
